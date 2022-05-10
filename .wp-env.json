@@ -6,10 +6,10 @@
 		"wp-content/plugins": "./wp-core/plugins",
 		"wp-content/themes": "./wp-core/themes"
 	},
-	"port": 3366,
+	"port": 3466,
 	"env": {
 		"tests": {
-			"port": 3368
+			"port": 3468
 		}
 	}
 }
