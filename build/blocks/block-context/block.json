@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "pbrocks-sample-blocks/provide-context",
+	"version": "0.1.1",
+	"title": "PBrocks Block Context",
+	"category": "pbrocks-sample-blocks",
+	"icon": {
+		"background": "#f57f49",
+		"foreground": "white",
+		"src": "flag"
+	},
+	"description": "Place to initialize scripts.",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "center"
+		},
+		"contextId": {
+			"type": "string",
+			"default": "text"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": true
+	},
+	"textdomain": "pbrocks-sample-blocks",
+	"editorScript": "file:./index.js"
+}
