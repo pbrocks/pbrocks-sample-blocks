@@ -44,7 +44,13 @@ wp-env start
 
 You should then see that a development site has been configured for you on localhost port 3466
 
-![Development Site Info](assets/localhost-s466.png)
+![Development Site Info](assets/localhost-3466.png)
+
+#### Log in to Site / Log into Site
+
+![Log in to Development Site](assets/LogIn--pbrocks-sample-blocks.png)
+
+#
 
 ## Tabs Block
 
