@@ -1,26 +1,34 @@
-/*
+/**
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
+import { useState, useEffect } from "@wordpress/element";
 import {
 	BlockControls,
+	InspectorControls,
 	MediaPlaceholder,
 	MediaUpload,
 	useBlockProps,
 	useInnerBlocksProps
 } from "@wordpress/block-editor";
-import { Toolbar, Button } from "@wordpress/components";
-import { useState, useEffect } from "@wordpress/element";
 
-/*
+import {
+	Button,
+	PanelBody,
+	RangeControl,
+	SelectControl,
+	ToggleControl,
+	Toolbar,
+} from "@wordpress/components";
+
+/**
  * External dependencies
  */
-import SwiperCore, { A11y, Thumbs } from "swiper";
+import SwiperCore, { A11y, Thumbs, Autoplay, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/swiper.scss";
 import "./swiper.scss";
 
-SwiperCore.use([A11y, Thumbs]);
+SwiperCore.use([A11y, Thumbs, Autoplay, Pagination, Navigation]);
 
 /*
  * Internal dependencies
@@ -35,14 +43,17 @@ export default function Edit({
 	setAttributes,
 }) {
 	const {
+		align,
 		autoplay,
+		autoplayDelay,
 		images,
 		autoHeight,
+		loop,
+		navigation,
+		pagination,
 		slidesPerView,
 		spaceBetween,
 		speed,
-		vertical,
-		loop,
 	} = attributes;
 
 	const blockProps = useBlockProps();
@@ -51,10 +62,12 @@ export default function Edit({
 
 	const [swiper, setSwiper] = useState(null);
 	const [options, setOptions] = useState({});
+	// const [options, setOptions] = useState({});
 
 	useEffect(() => {
 		let options = {};
-
+		options.navigation = navigation;
+		options.pagination = pagination;
 		options.autoHeight = autoHeight;
 		options.slidesPerView = slidesPerView;
 		options.speed = speed;
@@ -62,15 +75,29 @@ export default function Edit({
 		options.loop = loop;
 
 		setOptions(options);
-	}, [autoHeight, slidesPerView, spaceBetween, speed, vertical, loop]);
+	}, [
+		autoplay,
+		images,
+		autoHeight,
+		loop,
+		navigation,
+		pagination,
+		slidesPerView,
+		spaceBetween,
+		speed,
+	]);
 
 	const onImageSelect = (images) => {
 		let updatedImages = [];
 
 		images.map((image) => {
 			updatedImages = [
-				...updatedImages,
-				{ url: image.url, alt: image.alt, id: image.id },
+				...updatedImages, {
+					url: image.url,
+					alt: image.alt,
+					id: image.id,
+					key: image.id
+				},
 			];
 		});
 
@@ -99,9 +126,50 @@ export default function Edit({
 		);
 	}
 
+	const ImageAlignControl = () => {
+		return (
+			<SelectControl
+				label="Alignment"
+				value={align}
+				options={[
+					{ label: 'Centered', value: 'center' },
+					{ label: 'Wide width', value: 'wide' },
+					{ label: 'Full width', value: 'full' },
+				]}
+				onChange={(align) => setAttributes({ align })}
+			/>
+		);
+	};
+
 	return [
 		isSelected && (
-			<Inspector attributes={attributes} setAttributes={setAttributes} />
+			<>
+				<InspectorControls>
+					<PanelBody>
+
+						<ImageAlignControl />
+
+						<ToggleControl
+							label={__('Autoplay', 'pbrocks-sample-blocks')}
+							checked={autoplay}
+							onChange={() => setAttributes({ autoplay: !autoplay })}
+						/>
+
+						{autoplay && (
+							<RangeControl
+								label={__('Autoplay Delay', 'pbrocks-sample-blocks')}
+								value={autoplayDelay}
+								min={1}
+								max={5000}
+								onChange={(autoplayDelay) => setAttributes({ autoplayDelay })}
+							/>
+						)}
+
+					</PanelBody>
+				</InspectorControls>
+
+				<Inspector attributes={attributes} setAttributes={setAttributes} />
+			</>
 		),
 		<BlockControls>
 			<Toolbar>
@@ -124,18 +192,47 @@ export default function Edit({
 		</BlockControls>,
 
 		<div {...innerBlocksProps}>
-			<Swiper
+			{!autoplay && <Swiper
 				{...options}
+				className="slides-startup"
+				spaceBetween={20}
 				onSwiper={setSwiper}
 				onClick={() => onSwiperClick()}
-				onSlideChange={() => console.log("slide change")}
 			>
 				{images.map((image) => (
-					<SwiperSlide>
+					<SwiperSlide
+						key={image.id}
+					>
 						<img src={image.url} alt={image.alt} />
 					</SwiperSlide>
 				))}
-			</Swiper>
+			</Swiper>}
+
+			{autoplay && <Swiper
+				{...options}
+				className="slides-startup"
+				spaceBetween={20}
+				pagination={{
+					clickable: true
+				}}
+				autoplay={{
+					delay: 2500,
+					disableOnInteraction: false,
+				}}
+				navigation={true}
+				onSwiper={setSwiper}
+				onClick={() => onSwiperClick()}
+			>
+				{images.map((image) => (
+					<SwiperSlide
+						key={image.id}
+					>
+						<img src={image.url} alt={image.alt} />
+					</SwiperSlide>
+				))}
+			</Swiper>}
+			{console.log('options from')}
+			{console.table(options)}
 		</div>,
 	];
 }

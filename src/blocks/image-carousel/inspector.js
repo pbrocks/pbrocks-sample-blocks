@@ -4,14 +4,10 @@ import {
 	PanelBody,
 	ToggleControl,
 	RangeControl,
-	SelectControl,
 } from "@wordpress/components";
 
 export default function Inspector({ attributes, setAttributes }) {
 	const {
-		align,
-		autoplay,
-		autoplayDelay,
 		slidesPerView,
 		spaceBetween,
 		speed,
@@ -21,44 +17,9 @@ export default function Inspector({ attributes, setAttributes }) {
 		bulletClickable,
 	} = attributes;
 
-	const AlignmentControl = () => {
-		return (
-			<SelectControl
-				label={__('Alignment', 'pbrocks-sample-blocks')}
-				value={align}
-				options={[
-					{ label: 'Centered', value: 'center' },
-					{ label: 'Wide width', value: 'wide' },
-					{ label: 'Full width', value: 'full' },
-				]}
-				onChange={(align) => setAttributes({ align })}
-			/>
-		);
-	};
 	return (
 		<InspectorControls key="controls">
 			<PanelBody>
-				<AlignmentControl />
-				<p style={{ textAlign: "right" }}>
-					<em>*</em> (Currently only on frontend)
-				</p>
-
-				<ToggleControl
-					label={__('Autoplay *', 'pbrocks-sample-blocks')}
-					checked={autoplay}
-					onChange={() => setAttributes({ autoplay: !autoplay })}
-				/>
-
-				{autoplay && (
-					<RangeControl
-						label={__('Autoplay Delay', 'pbrocks-sample-blocks')}
-						value={autoplayDelay}
-						min={1}
-						max={5000}
-						onChange={(autoplayDelay) => setAttributes({ autoplayDelay })}
-					/>
-				)}
-
 				<ToggleControl
 					label={__('Loop', 'pbrocks-sample-blocks')}
 					checked={loop}
@@ -66,13 +27,13 @@ export default function Inspector({ attributes, setAttributes }) {
 				/>
 
 				<ToggleControl
-					label={__('Navigation *', 'pbrocks-sample-blocks')}
+					label={__('Navigation', 'pbrocks-sample-blocks')}
 					checked={navigation}
 					onChange={() => setAttributes({ navigation: !navigation })}
 				/>
 
 				<ToggleControl
-					label={__('Pagination *', 'pbrocks-sample-blocks')}
+					label={__('Pagination', 'pbrocks-sample-blocks')}
 					checked={pagination}
 					onChange={() => setAttributes({ pagination: !pagination })}
 				/>

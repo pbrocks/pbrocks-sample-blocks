@@ -5,7 +5,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'init', 'pbrocks_sample_blocks_enqueue_scripts' );
+add_action( 'init', 'register_pbrocks_sample_blocks_categories' );
+add_action( 'wp_enqueue_scripts', 'pbrocks_sample_blocks_enqueue_scripts' );
 add_filter( 'render_block', 'pbrocks_sample_blocks_enqueue_conditionally', 10, 2 );
 add_filter( 'block_categories_all', 'register_pbrocks_sample_blocks_categories', 10, 2 );
 /**
@@ -38,6 +39,34 @@ function pbrocks_sample_blocks_enqueue_scripts() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'js/tabs-frontend.js' ),
 		true
 	);
+	wp_register_script(
+		'swiper-4.3.3',
+		plugins_url( 'js/swiper-4.3.3.js', __FILE__ ),
+		array( 'jquery' ),
+		filemtime( plugin_dir_path( __FILE__ ) . 'js/swiper-4.3.3.js' ),
+		true
+	);
+	wp_register_style(
+		'swiper-4.3.3',
+		plugins_url( 'css/swiper-4.3.3.css', __FILE__ ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'css/swiper-4.3.3.css' ),
+		true
+	);
+	wp_register_script(
+		'image-carousel-frontend',
+		plugins_url( 'js/image-carousel-frontend.js', __FILE__ ),
+		array( 'swiper-4.3.3' ),
+		filemtime( plugin_dir_path( __FILE__ ) . 'js/image-carousel-frontend.js' ),
+		true
+	);
+	wp_register_script(
+		'swiper-frontend',
+		plugins_url( 'js/swiper-frontend.js', __FILE__ ),
+		array( 'jquery' ),
+		filemtime( plugin_dir_path( __FILE__ ) . 'js/swiper-frontend.js' ),
+		true
+	);
 }
 
 /**
@@ -47,6 +76,10 @@ function pbrocks_sample_blocks_enqueue_scripts() {
 function pbrocks_sample_blocks_enqueue_conditionally( $block_content, $block ) {
 	if ( 'pbrocks-sample-blocks/esnext-tabs' === $block['blockName'] ) {
 		wp_enqueue_script( 'esnext-tabs-frontend' );
+	}
+	if ( 'pbrocks-sample-blocks/image-carousel' === $block['blockName'] ) {
+		// wp_enqueue_script( 'image-carousel-frontend' );
+		// wp_enqueue_style( 'swiper-4.3.3' );
 	}
 	return $block_content;
 }
