@@ -1,4 +1,4 @@
-/**
+/*
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
@@ -47,6 +47,7 @@ export default function Edit({
 		autoplay,
 		autoplayDelay,
 		images,
+		autoHeight,
 		loop,
 		navigation,
 		pagination,
@@ -67,6 +68,7 @@ export default function Edit({
 		let options = {};
 		options.navigation = navigation;
 		options.pagination = pagination;
+		options.autoHeight = autoHeight;
 		options.slidesPerView = slidesPerView;
 		options.speed = speed;
 		options.spaceBetween = spaceBetween;
@@ -76,6 +78,7 @@ export default function Edit({
 	}, [
 		autoplay,
 		images,
+		autoHeight,
 		loop,
 		navigation,
 		pagination,

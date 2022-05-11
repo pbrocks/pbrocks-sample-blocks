@@ -1,13 +1,7 @@
 import { useBlockProps } from '@wordpress/block-editor'
 
-// import './swiper.scss'
-
 import './swiper-frontend'
 
-console.log('show attributes')
-/**
- * External dependencies
- */
 export default function save({ attributes }) {
 	const {
 		images,
@@ -30,13 +24,9 @@ export default function save({ attributes }) {
 	if (!images.length) {
 		return <div />;
 	}
-	const blockPropsSave = useBlockProps.save();
 
 	return (
-		<div {...blockPropsSave}>
-			<h3>
-				{images.length} console.log('show attributes')
-			</h3>
+		<div {...useBlockProps.save()}>
 			<div
 				class="swiper-container"
 				data-auto-height={autoHeight}
@@ -56,7 +46,7 @@ export default function save({ attributes }) {
 			>
 				<div class="swiper-wrapper">
 					{images.map((image) => (
-						<div class="swiper-slide">
+						<div class="swiper-slide" key={image.id}>
 							<img src={image.url} alt={image.alt} />
 						</div>
 					))}

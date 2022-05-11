@@ -1,0 +1,93 @@
+{
+	"name": "pbrocks-sample-blocks/nasa-image-carousel",
+	"title": "NASA Image Slider",
+	"category": "pbrocks-sample-blocks",
+	"icon": {
+		"background": "#fff",
+		"foreground": "rgb(11,61,145)",
+		"src": "tide"
+	},
+	"description": "Slideshows built with Swiper Slider.",
+	"textdomain": "pbrocks-sample-blocks",
+	"supports": {
+		"html": false,
+		"align": [
+			"center",
+			"full",
+			"wide"
+		]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "center"
+		},
+		"autoHeight": {
+			"type": "boolean",
+			"default": false
+		},
+		"images": {
+			"type": "array",
+			"default": []
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoplayDelay": {
+			"type": "number",
+			"default": 3000
+		},
+		"slidesPerView": {
+			"type": "number",
+			"default": 1
+		},
+		"spaceBetween": {
+			"type": "number",
+			"default": 0
+		},
+		"speed": {
+			"type": "number",
+			"default": 300
+		},
+		"effect": {
+			"type": "string",
+			"default": "slide"
+		},
+		"grabCursor": {
+			"type": "boolean",
+			"default": false
+		},
+		"loop": {
+			"type": "boolean",
+			"default": true
+		},
+		"navigation": {
+			"type": "boolean",
+			"default": false
+		},
+		"pagination": {
+			"type": "boolean",
+			"default": false
+		},
+		"bulletClickable": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbs": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbsPerView": {
+			"type": "number",
+			"default": 3
+		},
+		"thumbSpaceBetween": {
+			"type": "number",
+			"default": 10
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

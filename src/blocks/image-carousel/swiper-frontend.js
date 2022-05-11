@@ -24,33 +24,33 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		window.mySwiper = new Swiper(".swiper-container", {
 			autoplay: autoplay
 				? {
-						delay: autoplayDelay,
-				  }
+					delay: autoplayDelay,
+				}
 				: false,
 			loop: loop,
 			freeMode: freeMode,
 			direction: vertical ? "vertical" : "horizontal",
 			navigation: navigation
 				? {
-						nextEl: ".swiper-button-next",
-						prevEl: ".swiper-button-prev",
-				  }
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				}
 				: false,
 			pagination: pagination
 				? {
-						el: ".swiper-pagination",
-						clickable: bulletClickable,
-				  }
+					el: ".swiper-pagination",
+					clickable: bulletClickable,
+				}
 				: false,
 			scrollbar: scrollbar
 				? {
-						el: ".swiper-scrollbar",
-						hide: scrollbarHide,
-						draggable: scrollbarDraggable,
-				  }
+					el: ".swiper-scrollbar",
+					hide: scrollbarHide,
+					draggable: scrollbarDraggable,
+				}
 				: false,
 			// Optional parameters
-			// slidesPerView: slidesPerView,
+			slidesPerView: slidesPerView,
 			// spaceBetween: spaceBetween,
 			// speed: speed,
 			// effect: effect,

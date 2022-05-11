@@ -47,17 +47,29 @@ function pbrocks_sample_blocks_enqueue_scripts() {
 		true
 	);
 	wp_register_style(
-		'swiper-4.3.3',
+		'swiper-baseline-style',
 		plugins_url( 'css/swiper-4.3.3.css', __FILE__ ),
 		array(),
-		filemtime( plugin_dir_path( __FILE__ ) . 'css/swiper-4.3.3.css' ),
-		true
+		filemtime( plugin_dir_path( __FILE__ ) . 'css/swiper-4.3.3.css' )
+	);
+	wp_register_style(
+		'swiper-startup-style',
+		'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css',
+		array(),
+		'4.3.3'
 	);
 	wp_register_script(
 		'image-carousel-frontend',
 		plugins_url( 'js/image-carousel-frontend.js', __FILE__ ),
-		array( 'swiper-4.3.3' ),
+		array( 'swiper-startup' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'js/image-carousel-frontend.js' ),
+		true
+	);
+	wp_register_script(
+		'swiper-startup',
+		plugins_url( 'js/swiper-4.3.3.js', __FILE__ ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'js/swiper-4.3.3.js' ),
 		true
 	);
 	wp_register_script(
@@ -78,8 +90,13 @@ function pbrocks_sample_blocks_enqueue_conditionally( $block_content, $block ) {
 		wp_enqueue_script( 'esnext-tabs-frontend' );
 	}
 	if ( 'pbrocks-sample-blocks/image-carousel' === $block['blockName'] ) {
-		// wp_enqueue_script( 'image-carousel-frontend' );
-		// wp_enqueue_style( 'swiper-4.3.3' );
+		wp_enqueue_script( 'image-carousel-frontend' );
+		wp_enqueue_style( 'swiper-baseline-style' );
+	}
+	if ( 'pbrocks-sample-blocks/nasa-image-carousel' === $block['blockName'] ) {
+		wp_enqueue_style( 'swiper-baseline-style' );
+		// wp_enqueue_style( 'swiper-startup-style' );
+		wp_enqueue_script( 'image-carousel-frontend' );
 	}
 	return $block_content;
 }
