@@ -1,6 +1,6 @@
 # pbrocks-sample-blocks
 
+Some blocks developed by pbrocks.
 
-https://jsfiddle.net/pbrocks/17L6yqx4/15/
-
-
+ * Tabs Block - originally done for <b>Gutenberg Examples</b> plugin
+ * Image Carousel - proof of concept treatment of Swiper JS
