@@ -26,7 +26,6 @@ import {
  */
 import SwiperCore, { A11y, Thumbs, Autoplay, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "./swiper.scss";
 
 SwiperCore.use([A11y, Thumbs, Autoplay, Pagination, Navigation]);
 
@@ -35,6 +34,7 @@ SwiperCore.use([A11y, Thumbs, Autoplay, Pagination, Navigation]);
  */
 import Inspector from "./inspector";
 import "./editor.scss";
+import "./swiper.scss";
 
 export default function Edit({
 	isSelected,

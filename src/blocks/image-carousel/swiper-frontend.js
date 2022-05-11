@@ -6,8 +6,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		const spaceBetween = swiper.getAttribute("data-space-between");
 		const speed = swiper.getAttribute("data-speed");
 		const vertical = swiper.getAttribute("data-vertical") === "true";
-		const effect = swiper.getAttribute("data-effect");
-		const freeMode = swiper.getAttribute("data-free-mode") === "true";
 		const loop = swiper.getAttribute("data-loop") == "true";
 		const autoplay = swiper.getAttribute("data-autoplay") === "true";
 		const autoplayDelay = swiper.getAttribute("data-autoplay-delay");
@@ -28,7 +26,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				}
 				: false,
 			loop: loop,
-			freeMode: freeMode,
+			slidesPerView: slidesPerView,
+			spaceBetween: spaceBetween,
+			speed: speed,
 			direction: vertical ? "vertical" : "horizontal",
 			navigation: navigation
 				? {
@@ -49,19 +49,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 					draggable: scrollbarDraggable,
 				}
 				: false,
-			// Optional parameters
-			slidesPerView: slidesPerView,
-			// spaceBetween: spaceBetween,
-			// speed: speed,
-			// effect: effect,
-			// freeMode: freeMode,
-			// direction: vertical ? "vertical" : "horizontal",
-			// If we need pagination
-			// Navigation arrows
-			// And if we need scrollbar
-			// scrollbar: {
-			// 	el: ".swiper-scrollbar",
-			// },
 		});
 	}
 });
