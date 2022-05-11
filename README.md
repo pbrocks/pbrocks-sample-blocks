@@ -55,3 +55,7 @@ You should then see that a development site has been configured for you on local
 ## Tabs Block
 
 ![Tabs Block Screencast](assets/screencasts/tabs-gutenberg-examples.gif)
+
+## SwiperJS Block
+
+![SwiperJS Block Screencast](assets/screencasts/swiper-poc.gif)
