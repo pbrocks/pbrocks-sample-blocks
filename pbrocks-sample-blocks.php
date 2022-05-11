@@ -27,7 +27,6 @@ function pbrocks_sample_blocks_register_blocks() {
 	register_block_type( __DIR__ . '/build/blocks/block-context' );
 	register_block_type( __DIR__ . '/build/blocks/esnext-tabs' );
 	register_block_type( __DIR__ . '/build/blocks/image-carousel' );
-	register_block_type( __DIR__ . '/build/nasa-image-carousel' );
 }
 
 /**
