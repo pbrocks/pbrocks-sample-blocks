@@ -6,7 +6,10 @@
 	"title": "ESNext Tabs",
 	"category": "pbrocks-sample-blocks",
 	"example": {},
-	"icon": "universal-access-alt",
+	"icon": {
+		"background": "rgb(11,61,145)",
+		"src": "universal-access-alt"
+	},
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"supports": {
 		"html": false

@@ -93,7 +93,7 @@ const TabsEdit = ({
 								...tabs,
 								{
 									uid: tab.clientId,
-									title: `New Tab ${position + 1}`,
+									title: `Editable Label ${position + 1}`,
 								},
 							],
 						});

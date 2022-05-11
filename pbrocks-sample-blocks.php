@@ -24,7 +24,6 @@ add_action( 'init', 'pbrocks_sample_blocks_php_init' );
  * /src folder for changes and builds in /build.
  */
 function pbrocks_sample_blocks_register_blocks() {
-	register_block_type( __DIR__ . '/build/blocks/block-context' );
 	register_block_type( __DIR__ . '/build/blocks/esnext-tabs' );
 	register_block_type( __DIR__ . '/build/blocks/image-carousel' );
 }
@@ -36,12 +35,6 @@ function pbrocks_sample_blocks_php_init() {
 	$block_directory = __DIR__ . '/inc';
 	if ( file_exists( $block_directory ) && is_dir( $block_directory ) ) {
 		foreach ( glob( $block_directory . '/*.php' ) as $filename ) {
-			require_once $filename;
-		}
-	}
-	$block_callbacks = __DIR__ . '/inc/callbacks';
-	if ( file_exists( $block_callbacks ) && is_dir( $block_callbacks ) ) {
-		foreach ( glob( $block_callbacks . '/*.php' ) as $filename ) {
 			require_once $filename;
 		}
 	}
