@@ -26,6 +26,7 @@
 		"start": "wp-scripts start"
 	},
 	"dependencies": {
+		"classnames": "^2.3.1",
 		"swiper": "^8.1.4"
 	}
 }

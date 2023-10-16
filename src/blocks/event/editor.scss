@@ -1,0 +1,28 @@
+/* Editor styles */
+.wp-block-a8c-event {
+	.event__date-select {
+		display: inline;
+
+		.components-button {
+			height: auto;
+			background: white;
+		}
+	}
+
+	// Fixes for overriding editor styles
+	.editor-styles-wrapper &,
+	// Additional specificity needed for center aligned blocks
+	.editor-styles-wrapper .wp-block[data-align="center"] > & {
+		text-align: left;
+
+		p {
+			font-family: inherit;
+		}
+
+		.event__title {
+			margin: 0 0 18px;
+			font-weight: 800;
+			line-height: 40px;
+		}
+	}
+}

@@ -24,7 +24,8 @@ add_action( 'init', 'pbrocks_sample_blocks_php_init' );
  * /src folder for changes and builds in /build.
  */
 function pbrocks_sample_blocks_register_blocks() {
-	register_block_type( __DIR__ . '/build/blocks/esnext-tabs' );
+	// register_block_type( __DIR__ . '/build/blocks/esnext-tabs' );
+	register_block_type( __DIR__ . '/build/blocks/event' );
 	register_block_type( __DIR__ . '/build/blocks/image-carousel' );
 }
 
